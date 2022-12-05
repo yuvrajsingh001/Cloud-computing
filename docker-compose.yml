@@ -1,0 +1,78 @@
+version: '3.3'
+
+services:
+  nginx:
+    depends_on:
+      - php-fpm
+    container_name: mynginx
+    image: nginx:latest
+    ports:
+      - "8080:80"
+    volumes:
+      - ./src:/var/www/html
+      - ./src/nginx.ini:/etc/nginx/conf.d/default.conf
+    links:
+      - php-fpm
+    networks:
+      - mynet
+
+  phpmyadmin:
+    depends_on:
+      - db
+    container_name: phpMyAdmin
+    image: phpmyadmin/phpmyadmin:latest
+    restart: always
+    ports:
+      - "8082:80"
+    environment:
+      - PMA_HOST=mysql
+      - PMA_PORT=3306
+      - PMA_ARBITRARY=1
+    networks:
+      - mynet
+
+  php-fpm:
+    depends_on:
+      - db
+      - redis
+    container_name: myphp
+    build:
+      context: .
+      dockerfile: phpfpm_dockerfile
+    volumes:
+      - ./src:/var/www/html
+    links:
+      - "db:mysql"
+    restart: always
+    ports:
+      - "9000"
+    networks:
+      - mynet
+
+  db:
+    container_name: mysql
+    image: mariadb:latest
+    volumes:
+      - database:/var/lib/mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: my_pass
+      MYSQL_DATABASE: user_data
+      MYSQL_USER: php@172.18.0.4
+      MYSQL_PASSWORD: php
+    ports:
+      - "6033:3306"
+    networks:
+      - mynet
+  redis:
+    container_name: myredis
+    image: redis:latest
+    restart: always
+    networks:
+      - mynet
+
+volumes:
+  database:
+networks:
+  mynet:
+    driver: bridge
