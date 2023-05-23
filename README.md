@@ -1,6 +1,8 @@
 
 # Cloud Computing Project Proposal
 
+This Project was a part of my Coursework for INFS3208: Cloud Computing, during my penultimate year at UQ.
+
 Since Covid-19 pandemic hit, every industry that required some form of social interaction suffered due to people quarantining. Every business and service was looking to create an online presence to keep their operations running. Healthcare services in such scenario had to be brought online in order for people to access it from the comfort of their home rather than wasting time waiting for their appointments which would lead to compromising on social distancing. Hence I thought of building a platform wherein people can access information about doctors and hospitals and avail healthcare services. 
 ## Motivation
 The key reasons that motivated me were: 
