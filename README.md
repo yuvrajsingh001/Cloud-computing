@@ -47,4 +47,4 @@ This is achieved by providing features such as:
 
 	Docker-Swarm : Creates a cluster of nodes to improve reliability.
 ## Working Diagram
-![Logo](https://www.canva.com/design/DAFPlRnFX7E/NyGmZX2pN-G8pj4GoDOw-g/view?utm_content=DAFPlRnFX7E&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink)
+![image](https://github.com/yuvrajsingh001/Cloud-computing/assets/64212975/7cb34987-6497-48d1-9f58-24e7c1146508)
